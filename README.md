@@ -1,7 +1,3 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
 ## Get started
 
 1. Install dependencies
@@ -25,32 +21,88 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
 - To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
 - If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
 - Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# CI/CD pipelins : 
+Pull request
+  → lint
+  → format check
+  → TypeScript check
+  → unit tests
+  → coverage
+  → dependency scan
+  → secret scan
+  → SAST/code quality
+  → Android debug build
 
-## Join the community
+Main branch
+  → all PR checks
+  → Android release build
+  → iOS build
+  → artifact signing
+  → deploy to internal testing
 
-Join our community of developers creating universal apps.
+Release tag
+  → production build
+  → manual approval
+  → Play Store / App Store deployment
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+#  Tools
+CI/CD: GitHub Actions.
+
+Linting: ESLint.
+
+Formatting: Prettier.
+
+Type checking: tsc --noEmit.
+
+Tests: Jest and React Native Testing Library.
+
+Coverage: Jest coverage.
+
+Dependency vulnerabilities: npm audit, Dependabot, or Snyk.
+
+Dependency review: GitHub Dependency Review Action.
+
+SAST/code quality: CodeQL or SonarQube.
+
+Secret scanning: GitHub secret scanning or Gitleaks.
+
+Android build: Gradle.
+
+iOS build: Xcode/Fastlane.
+
+Mobile distribution: Firebase App Distribution, TestFlight, and Play Console internal testing.
+
+Crash monitoring: Firebase Crashlytics or Sentry.
+
+Important additions
+Also include:
+
+Dependency pinning: commit package-lock.json or yarn.lock.
+
+SBOM generation: useful for tracking supply-chain dependencies.
+
+License checks: detect incompatible package licenses.
+
+Signed builds: keep Android keystore and App Store credentials in protected GitHub secrets.
+
+Environment separation: development, staging, and production.
+
+Manual production approval: do not deploy directly from every commit.
+
+Build caching: cache npm, Gradle, and CocoaPods dependencies.
+
+Branch protection: require CI checks and code review before merging.
+
+E2E tests: use Detox against a staging backend before release.
+
+API compatibility tests: ensure the app works with the deployed backend.
+
+OTA updates carefully: use Expo Updates or CodePush only for JavaScript changes, not native changes.
