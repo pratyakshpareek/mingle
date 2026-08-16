@@ -104,15 +104,3 @@ E2E tests: use Detox against a staging backend before release.
 API compatibility tests: ensure the app works with the deployed backend.
 
 OTA updates carefully: use Expo Updates or CodePush only for JavaScript changes, not native changes.
-
-
-
-
-# format fix:
-npm run format:check
-
-Then run:
-
-npx prettier --write .
-
-That will format all files according to your Prettier configuration.
