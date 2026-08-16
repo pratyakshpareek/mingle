@@ -26,8 +26,8 @@ jobs:
           cache: npm
 
       - name: Setup npm
-        run: npm install -g npm @10.9.2
-        
+        run: npm install -g npm@10.9.2
+
       - name: Verify Node and npm
         run: |
           node -v
