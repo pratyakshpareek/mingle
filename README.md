@@ -25,35 +25,33 @@ You can start developing by editing the files inside the **app** directory. This
 - If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
 - Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
 
+# CI/CD pipelins :
 
-
-# CI/CD pipelins : 
 Pull request
-  → lint
-  → format check
-  → TypeScript check
-  → unit tests
-  → coverage
-  → dependency scan
-  → secret scan
-  → SAST/code quality
-  → Android debug build
+→ lint
+→ format check
+→ TypeScript check
+→ unit tests
+→ coverage
+→ dependency scan
+→ secret scan
+→ SAST/code quality
+→ Android debug build
 
 Main branch
-  → all PR checks
-  → Android release build
-  → iOS build
-  → artifact signing
-  → deploy to internal testing
+→ all PR checks
+→ Android release build
+→ iOS build
+→ artifact signing
+→ deploy to internal testing
 
 Release tag
-  → production build
-  → manual approval
-  → Play Store / App Store deployment
+→ production build
+→ manual approval
+→ Play Store / App Store deployment
 
+# Tools
 
-
-#  Tools
 CI/CD: GitHub Actions.
 
 Linting: ESLint.
@@ -106,3 +104,15 @@ E2E tests: use Detox against a staging backend before release.
 API compatibility tests: ensure the app works with the deployed backend.
 
 OTA updates carefully: use Expo Updates or CodePush only for JavaScript changes, not native changes.
+
+
+
+
+# format fix:
+npm run format:check
+
+Then run:
+
+npx prettier --write .
+
+That will format all files according to your Prettier configuration.
